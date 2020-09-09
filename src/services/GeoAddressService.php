@@ -1,15 +1,15 @@
 <?php
 
-namespace TDE\GeoAddress\services;
+namespace Prophets\GeoAddress\services;
 
 use Craft;
 use craft\base\Component;
-use TDE\GeoAddress\GeoAddress;
+use Prophets\GeoAddress\GeoAddress;
 
 /**
  * Class GeoAddressService
  *
- * @package TDE\GeoAddress\services
+ * @package Prophets\GeoAddress\services
  */
 class GeoAddressService extends Component
 {
@@ -19,29 +19,92 @@ class GeoAddressService extends Component
 	 */
     public function getCoordsByAddress(array $value)
     {
-    	$address = [
-    		'lat' => null,
-			'lng' => null,
-			'formattedAddress' => null,
-			'countryName' => null,
-			'countryCode' => null,
-		];
+        $geocoderService = GeoAddress::getInstance()->getSettings()->geocoderService;
 
-		$requestUrl = 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' . urlencode(json_encode($value)) . '&key=' . GeoAddress::getInstance()->getSettings()->googleApiKey;
-		$result = json_decode(file_get_contents($requestUrl));
+        if ($geocoderService === 'google') {
+            return $this->getCoordsByAddressGoogle($value);
+        }
 
-		// no results
-		if ($result->status !== 'OK' || empty($result->results)) {
-			Craft::warning(
-				Craft::t(
-					'geoaddress',
-					'GeoAddress coding failed: ' . $result->status
-				),
-				__METHOD__
-			);
+        return $this->getCoordsByAddressOpenStreetMap($value);
+    }
 
-			return $address;
-		}
+    /**
+     * @param array $value
+     *
+     * @return array
+     */
+    public function getCoordsByAddressOpenStreetMap(array $value)
+    {
+
+        $address = [
+            'lat' => null,
+            'lng' => null,
+            'formattedAddress' => null,
+            'countryName' => null,
+            'countryCode' => null,
+        ];
+
+        $opts = array('http'=>array('header'=>"User-Agent: AddressScript\r\n"));
+        $context = stream_context_create($opts);
+        $searchString = $value['street'].' '.$value['zip'].' '.$value['city'].' '.$value['country'];
+        $requestUrl = 'https://nominatim.openstreetmap.org/search/' . rawurlencode($searchString) . '?format=json';
+        $rawResult = file_get_contents($requestUrl, false, $context);
+        $result = json_decode($rawResult);
+
+        // no results
+        if (empty($result)) {
+            Craft::warning(
+                Craft::t(
+                    'geoaddress',
+                    'GeoAddress coding failed'
+                ),
+                __METHOD__
+            );
+            return $address;
+        }
+
+        // get the geometry
+        if (isset($result[0]->lat) && isset($result[0]->lon) ) {
+            $address['lat'] = $result[0]->lat;
+            $address['lng'] = $result[0]->lon;
+        }
+
+        if (isset($result[0]->display_name)) {
+            $address['formattedAddress'] = $result[0]->display_name;
+        }
+        return $address;
+    }
+
+    /**
+     * @param array $value
+     *
+     * @return array
+     */
+    public function getCoordsByAddressGoogle(array $value)
+    {
+        $address = [
+            'lat' => null,
+            'lng' => null,
+            'formattedAddress' => null,
+            'countryName' => null,
+            'countryCode' => null,
+        ];
+
+        $requestUrl = 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' . urlencode(json_encode($value)) . '&key=' . GeoAddress::getInstance()->getSettings()->googleApiKey;
+        $result = json_decode(file_get_contents($requestUrl));
+
+        // no results
+        if ($result->status !== 'OK' || empty($result->results)) {
+            Craft::warning(
+                Craft::t(
+                    'geoaddress',
+                    'GeoAddress coding failed: ' . $result->status
+                ),
+                __METHOD__
+            );
+
+            return $address;
+        }
 
         $addressComponent = null;
         foreach ($result->results as $addressResult) {

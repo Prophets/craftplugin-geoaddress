@@ -1,6 +1,6 @@
 <?php
 
-namespace TDE\GeoAddress\models;
+namespace Prophets\GeoAddress\models;
 
 use Craft;
 use craft\base\Model;
@@ -8,7 +8,7 @@ use craft\base\Model;
 /**
  * Class GeoAddressSettingsModel
  *
- * @package TDE\GeoAddress\models
+ * @package Prophets\GeoAddress\models
  */
 class GeoAddressSettingsModel extends Model
 {
@@ -17,13 +17,16 @@ class GeoAddressSettingsModel extends Model
 	 */
 	public $googleApiKey;
 
+	public $geocoderService;
+
 	/**
 	 * @return array
 	 */
 	public function rules()
 	{
 		return [
-			['googleApiKey', 'string']
+			['googleApiKey', 'string'],
+            ['geocoderService', 'string'],
 		];
 	}
 }

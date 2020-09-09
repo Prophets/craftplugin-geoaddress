@@ -4,7 +4,7 @@ Geo Address field for Craft 3 Sections.
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.1 or later.
 
 ## Installation
 
@@ -16,7 +16,7 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require tde/craftplugin-geoaddress
+        composer require Prophets/craftplugin-geoaddress
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for TDE - Geo Address.
 

@@ -1,20 +1,20 @@
 <?php
 
-namespace TDE\GeoAddress\fields;
+namespace Prophets\GeoAddress\fields;
 
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
 use craft\helpers\Db;
-use TDE\GeoAddress\GeoAddress;
-use TDE\GeoAddress\models\GeoAddressModel;
+use Prophets\GeoAddress\GeoAddress;
+use Prophets\GeoAddress\models\GeoAddressModel;
 use yii\db\Schema;
 use craft\helpers\Json;
 
 /**
  * Class GeoAddressField
  *
- * @package TDE\GeoAddress\fields
+ * @package Prophets\GeoAddress\fields
  */
 class GeoAddressField extends Field
 {

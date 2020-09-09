@@ -1,24 +1,24 @@
 <?php
 
-namespace TDE\GeoAddress;
+namespace Prophets\GeoAddress;
 
 use Craft;
 use craft\base\Plugin;
 use craft\services\Fields;
 use craft\events\RegisterComponentTypesEvent;
 use craft\web\twig\variables\CraftVariable;
-use TDE\GeoAddress\models\GeoAddressSettingsModel;
-use TDE\GeoAddress\services\GeoAddressService;
-use TDE\GeoAddress\twigextensions\GeoAddressTwigExtension;
+use Prophets\GeoAddress\models\GeoAddressSettingsModel;
+use Prophets\GeoAddress\services\GeoAddressService;
+use Prophets\GeoAddress\twigextensions\GeoAddressTwigExtension;
 use yii\base\Event;
-use TDE\GeoAddress\fields\GeoAddressField;
+use Prophets\GeoAddress\fields\GeoAddressField;
 
 /**
  * Class GeoAddress
  *
  * @property GeoAddressService $geoAddressService
  *
- * @package TDE\GeoAddress
+ * @package Prophets\GeoAddress
  */
 class GeoAddress extends Plugin
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace TDE\GeoAddress\assetbundles\geoaddressfield;
+namespace Prophets\GeoAddress\assetbundles\geoaddressfield;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -9,7 +9,7 @@ use craft\web\assets\cp\CpAsset;
 /**
  * Class GeoAddressFieldAsset
  *
- * @package TDE\GeoAddress\assetbundles\geoaddressfield
+ * @package Prophets\GeoAddress\assetbundles\geoaddressfield
  */
 class GeoAddressFieldAsset extends AssetBundle
 {
@@ -19,7 +19,7 @@ class GeoAddressFieldAsset extends AssetBundle
 	public function init()
 	{
 		// define the path that your publishable resources live
-		$this->sourcePath = "@TDE/GeoAddress/assetbundles/geoaddressfield/dist";
+		$this->sourcePath = "@Prophets/GeoAddress/assetbundles/geoaddressfield/dist";
 
 		// define the dependencies
 		$this->depends = [

@@ -1,11 +1,11 @@
 {
-    "pluginName": "TDE - Geo Address",
+    "pluginName": "Prophets - Geo Address",
     "pluginDescription": "Geo Address fields for Craft Sections",
     "pluginVersion": "1.0.1",
-    "pluginAuthorName": "TDE",
-    "pluginVendorName": "tde",
-    "pluginAuthorUrl": "http://www.tde.nl",
-    "pluginAuthorGithub": "tdeNL",
+    "pluginAuthorName": "Prophets",
+    "pluginVendorName": "prophets",
+    "pluginAuthorUrl": "https://www.prophets.be",
+    "pluginAuthorGithub": "Prophets",
     "codeComments": "yes",
     "pluginComponents": [
         "fieldtypes",

@@ -1,5 +1,20 @@
 {% import "_includes/forms" as forms %}
 
+<div class="geoaddress--switch" style="margin-bottom: 20px">
+    {{ forms.selectField({
+        label: "Geocoder",
+        instructions: "You can chose between Google and OpenStreetMap" ,
+        id: 'geocoderService',
+        name: 'geocoderService',
+        options: {
+            'google': "Google",
+            'openstreetmap': "OpenStreetMap",
+        },
+        value: settings['geocoderService']
+    }) }}
+</div>
+
+<div class="geoaddress--googleAPI">
 {{ forms.textField({
 	label: 'Google API key',
 	instructions: 'Enter the Google Maps Geocoding API key',
@@ -7,3 +22,4 @@
 	name: 'googleApiKey',
 	value: settings['googleApiKey']})
 }}
+</div>

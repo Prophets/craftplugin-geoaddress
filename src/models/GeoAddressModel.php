@@ -1,6 +1,6 @@
 <?php
 
-namespace TDE\GeoAddress\models;
+namespace Prophets\GeoAddress\models;
 
 use Craft;
 use craft\base\Model;
@@ -8,7 +8,7 @@ use craft\base\Model;
 /**
  * Class GeoAddressModel
  *
- * @package TDE\GeoAddress\models
+ * @package Prophets\GeoAddress\models
  */
 class GeoAddressModel extends Model
 {

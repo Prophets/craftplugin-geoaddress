@@ -1,13 +1,13 @@
 <?php
 
-namespace TDE\GeoAddress\twigextensions;
+namespace Prophets\GeoAddress\twigextensions;
 
-use TDE\GeoAddress\GeoAddress;
+use Prophets\GeoAddress\GeoAddress;
 
 /**
  * Class GeoAddressTwigExtension
  *
- * @package TDE\GeoAddress\twigextensions
+ * @package Prophets\GeoAddress\twigextensions
  */
 class GeoAddressTwigExtension extends \Twig_Extension
 {
