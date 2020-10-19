@@ -1,6 +1,7 @@
 .geoaddress--name,
 .geoaddress--street,
-.geoaddress--country {
+.geoaddress--country,
+.geoaddress--customlatlng {
   margin-bottom: 15px;
 }
 

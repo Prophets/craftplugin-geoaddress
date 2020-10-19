@@ -43,13 +43,21 @@
 			value: (value.country is defined) ? value.country : ''
 		}) }}
 	</div>
+	<div class="geoaddress--customlatlng">
+		{{ forms.lightswitch({
+			id: name ~ '-customlatlng',
+			name: name ~'[customlatlng]',
+			onLabel: 'Use custom latitude and longitude values'|t('geoaddress'),
+			on: value.customlatlng
+		}) }}
+	</div>
 	<div class="geoaddress--lat-lng">
 		{{ forms.textField({
 			id: name ~ '-lat',
 			name: name ~ '[lat]',
 			class: 'geoaddress-lat',
 			value: (value.lat is defined) ? value.lat : '',
-			disabled: true,
+			disabled: false,
 			placeholder: 'No coordinates found yet'|t('geoaddress')
 		}) }}
 
@@ -58,7 +66,7 @@
 			name: name ~ '[lng]',
 			class: 'geoaddress-lng',
 			value: (value.lng is defined) ? value.lng : '',
-			disabled: true,
+			disabled: false,
 			placeholder: 'No coordinates found yet'|t('geoaddress')
 		}) }}
 	</div>

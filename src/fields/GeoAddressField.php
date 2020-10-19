@@ -89,6 +89,10 @@ class GeoAddressField extends Field
 	 */
 	public function serializeValue($value, ElementInterface $element = NULL)
 	{
+	    if ($value['customlatlng'] === '1') {
+	        return $value;
+        }
+
 		return array_merge(
 			$value,
 			GeoAddress::getInstance()->geoAddressService->getCoordsByAddress($value)

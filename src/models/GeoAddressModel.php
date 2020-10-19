@@ -68,6 +68,11 @@ class GeoAddressModel extends Model
 	public $formattedAddress;
 
     /**
+     * @var booelean
+     */
+	public $customlatlang;
+
+    /**
      * Returns the validation rules for attributes.
      *
      * @return array
@@ -85,7 +90,8 @@ class GeoAddressModel extends Model
 			['countryCode', 'string'],
 			['lat', 'float'],
 			['lng', 'float'],
-			['formattedAddress', 'string']
+			['formattedAddress', 'string'],
+            ['customlatlng', 'boolean'],
         ];
     }
 }
