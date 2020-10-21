@@ -89,7 +89,7 @@ class GeoAddressField extends Field
 	 */
 	public function serializeValue($value, ElementInterface $element = NULL)
 	{
-	    if ($value['customlatlng'] === '1') {
+	    if (isset($value['customlatlng']) && $value['customlatlng'] === '1') {
 	        return $value;
         }
 
